@@ -1,0 +1,127 @@
+/* Sambal Bu Rini - gaya utama */
+:root {
+  --hijau: #1f4d3a;
+  --cabai: #c8102e;
+  --kunyit: #f2b705;
+  --nasi: #fbfaf5;
+  --teks: #23201b;
+  --garis: #e4e0d3;
+  --bagian: #f3efe2;
+  --font-judul: "Bricolage Grotesque", "Segoe UI", Arial, sans-serif;
+  --font-isi: "Nunito Sans", "Segoe UI", Arial, sans-serif;
+}
+[data-bs-theme="dark"] {
+  --nasi: #14201a;
+  --teks: #ece8dc;
+  --garis: #2c3d34;
+  --bagian: #1b2b23;
+  --hijau: #7fc3a0;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  font-family: var(--font-isi);
+  background: var(--nasi);
+  color: var(--teks);
+  line-height: 1.65;
+  margin: 0;
+}
+h1, h2, h3, h4, h5, .brand { font-family: var(--font-judul); font-weight: 800; letter-spacing: -0.01em; }
+h1 { font-size: 2.6rem; line-height: 1.1; }
+p, li { max-width: 68ch; }
+a { color: var(--cabai); }
+img { max-width: 100%; height: auto; }
+
+.navbar { background: var(--nasi) !important; border-color: var(--garis) !important; }
+.brand { color: var(--cabai) !important; font-size: 1.35rem; }
+.nav-link.active { color: var(--cabai); font-weight: 600; box-shadow: inset 0 -3px 0 var(--kunyit); }
+
+.btn-chili { background: var(--cabai); border-color: var(--cabai); color: #fff; }
+.btn-chili:hover, .btn-chili:focus { background: #a30d25; border-color: #a30d25; color: #fff; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--kunyit);
+  outline-offset: 2px;
+}
+
+/* Hero */
+.hero { padding: 4rem 0; border-bottom: 1px solid var(--garis); }
+.hero .lead { max-width: 46ch; }
+
+/* Area foto: tetap berbentuk kotak berwarna sebelum gambar ditambahkan */
+.foto {
+  background: var(--bagian);
+  border: 1px dashed var(--garis);
+  overflow: hidden;
+  width: 100%;
+}
+.foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.foto-hero { aspect-ratio: 4 / 3; border-radius: 1.5rem 0.25rem 1.5rem 0.25rem; }
+.foto-kartu { aspect-ratio: 16 / 10; border: 0; border-radius: 0; }
+.foto-peta { aspect-ratio: 16 / 10; border-radius: 0.5rem; }
+
+/* Bagian berwarna */
+.bagian-warna { background: var(--bagian); }
+.card { background: var(--nasi); border: 1px solid var(--garis); border-radius: 0.5rem; overflow: hidden; }
+
+/* Daftar */
+.daftar-nilai { list-style: none; padding: 0; margin: 0; }
+.daftar-nilai li { padding: 0.55rem 0 0.55rem 1.6rem; border-bottom: 1px solid var(--garis); position: relative; }
+.daftar-nilai li::before { content: ""; position: absolute; left: 0; top: 1.1rem; width: 0.7rem; height: 0.7rem; background: var(--cabai); border-radius: 50% 0 50% 50%; }
+.daftar-langkah { padding-left: 1.25rem; }
+.daftar-langkah li { padding-left: 0.25rem; margin-bottom: 0.4rem; }
+
+/* Strip info (Flexbox buatan sendiri) */
+.info-strip { display: flex; flex-wrap: wrap; gap: 1rem; }
+.info-strip > div {
+  flex: 1 1 10rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.25rem;
+  background: var(--bagian);
+  border-left: 5px solid var(--kunyit);
+}
+.info-strip strong { font-family: var(--font-judul); font-size: 1.5rem; color: var(--hijau); }
+
+/* Tabel */
+.table caption { caption-side: top; padding-left: 0; color: var(--teks); opacity: 0.75; }
+
+/* Formulir */
+.pesan-error { color: var(--cabai); font-size: 0.9rem; min-height: 1.3rem; }
+[data-bs-theme="dark"] .pesan-error { color: #ff8a9a; }
+.form-control.tidak-valid, .form-select.tidak-valid { border-color: var(--cabai); }
+.ringkasan { border-left: 5px solid var(--hijau); background: var(--bagian); padding: 1rem 1.25rem; border-radius: 0 0.5rem 0.5rem 0; }
+.ringkasan dt { font-weight: 600; }
+.ringkasan dd { margin: 0 0 0.5rem; overflow-wrap: anywhere; }
+
+/* Footer (Flexbox buatan sendiri) */
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  padding: 1.5rem max(1rem, calc((100% - 1140px) / 2));
+  font-size: 0.95rem;
+  background: var(--bagian);
+  border-color: var(--garis) !important;
+}
+
+/* Responsif: layar sampai 1024px (tablet / laptop kecil) */
+@media (max-width: 1024px) {
+  h1 { font-size: 2.2rem; }
+  .hero { padding: 3rem 0; }
+}
+
+/* Responsif: layar ponsel (375px dan sekitarnya) */
+@media (max-width: 480px) {
+  h1 { font-size: 1.85rem; }
+  h2 { font-size: 1.5rem; }
+  .hero { padding: 2rem 0; }
+  .hero .btn { width: 100%; margin-left: 0 !important; }
+  .footer-flex { flex-direction: column; align-items: flex-start; }
+  .info-strip > div { flex-basis: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
